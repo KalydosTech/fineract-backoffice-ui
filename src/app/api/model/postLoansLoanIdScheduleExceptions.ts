@@ -23,41 +23,26 @@
  * Do not edit the class manually.
  */
 
+import { PostLoansLoanIdScheduleModifiedInstallment } from './postLoansLoanIdScheduleModifiedInstallment';
+import { PostLoansLoanIdScheduleDeletedInstallment } from './postLoansLoanIdScheduleDeletedInstallment';
+import { PostLoansLoanIdScheduleNewInstallment } from './postLoansLoanIdScheduleNewInstallment';
 
 
 /**
- * Working capital loan running balances
+ * The installment changes to apply to the repayment schedule
  */
-export interface GetBalance { 
+export interface PostLoansLoanIdScheduleExceptions { 
     /**
-     * Cumulative breach past due amount, summed from each breach schedule period\'s outstanding amount
+     * Installments removed from the schedule
      */
-    breachPastDueAmount?: number;
-    fee?: number;
-    feeOutstanding?: number;
-    feePaid?: number;
-    id?: number;
-    overpaymentAmount?: number;
-    penalty?: number;
-    penaltyOutstanding?: number;
-    penaltyPaid?: number;
+    deletedinstallments?: Array<PostLoansLoanIdScheduleDeletedInstallment>;
     /**
-     * Total repayable principal: the disbursed amount plus the discount fee. Zero until disbursement, and zero again once a disbursal is undone.
+     * Installments whose due date, principal or instalment amount changes
      */
-    principal?: number;
-    principalAdjustment?: number;
-    principalOutstanding?: number;
-    principalPaid?: number;
-    realizedIncomeFromDiscountFee?: number;
+    modifiedinstallments?: Array<PostLoansLoanIdScheduleModifiedInstallment>;
     /**
-     * Total amount actually disbursed
+     * Installments added to the schedule
      */
-    totalDisbursement?: number;
-    totalDiscountFee?: number;
-    totalDiscountFeeAdjustment?: number;
-    totalExpectedRepayment?: number;
-    totalOutstanding?: number;
-    totalRepayment?: number;
-    unrealizedIncomeFromDiscountFee?: number;
+    newinstallments?: Array<PostLoansLoanIdScheduleNewInstallment>;
 }
 
